@@ -1,3 +1,6 @@
+<?php  
+    require_once('inc/global.php');
+?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -47,9 +50,42 @@
         <div class="container">
 
             <div class="starter-template">
-                <h1>Bootstrap 3.0 template</h1>
+                <h1>Álbum da Copa</h1>
                 <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
             </div>
+
+            <div class="col-xs-6">
+                <form method="POST" action="inc/cadastro_usuario.php">
+                    <div class="form-group">
+                        <label for="user_nome" class="label-control">Nome:</label>
+                        <input type="text" placeholder="Digite seu nome" class="form-control" id="user_nome" name="user_nome">                    
+                    </div>
+                    <div class="form-group">
+                        <label for="user_email" class="label-control">E-mail:</label>
+                        <input type="email" placeholder="Digite seu e-mail" class="form-control" id="user_email" name="user_email">                    
+                    </div>
+                    <div class="form-group">
+                        <label for="user_idade" class="label-control">Idade:</label>
+                        <input type="text" placeholder="Digite seu e-mail" class="form-control" id="user_idade" name="user_idade">                    
+                    </div>
+                    <div class="form-group">
+                        <label for="user_sexo" class="label-control">Idade:</label>
+                        <select class="form-control" id="user_sexo" name="user_sexo">
+                            <option></option>
+                            <option value="0">Masculino</option>
+                            <option value="1">Feminino</option>
+                        </select>                
+                    </div>
+                    <div class="form-group">
+                        <label for="user_senha" class="label-control">Senha:</label>
+                        <input type="text" placeholder="Digite sua senha" class="form-control" id="user_senha" name="user_senha">                    
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Cadastrar!" class="btn" />
+                    </div>
+                </form>
+            </div>
+
 
         </div><!-- /.container -->
 
