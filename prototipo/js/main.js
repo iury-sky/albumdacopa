@@ -27,22 +27,49 @@ $(document).ready(function() {
 		return false;
 	});
 
-	/*$('#btn_logout').click(function(event) {
-		
-		$.ajax({
-			type: 'GET',
-			url: 'inc/logout.php',
-			success: function(html){
-				$('#link_inicio').click();
-			}
-		});
 
-		return false;
-	});*/
+	$('#form-cadastro-usuario input').focus(function(event) {
+		$(".help-block").html('');
+	});
+
+
+
+	$('#user_email').blur(function(event) {
+
+		var email = $('#user_email').val();
+
+		if (email != "") {
+			$.ajax({
+				url: 'inc/user_check.php',
+				type: 'POST',
+				data: 'user_email='+email,
+				success: function(formOk){
+				    if(formOk=='false') {
+				    	if( $('#form-group-email').hasClass('has-success') ) { //limpando...
+				    		$('#form-group-email').removeClass('has-success');		
+				    		$('#form-group-email .form-control-feedback').removeClass('glyphicon glyphicon-ok');		    		
+				    	}
+				    	$('#form-group-email').addClass('has-error');
+				    	$('#form-group-email .form-control-feedback').addClass('glyphicon glyphicon-remove');
+				    }
+				    else {
+				    	if( $('#form-group-email').hasClass('has-error') ) { //limpando...
+				    		$('#form-group-email').removeClass('has-error');		
+				    		$('#form-group-email .form-control-feedback').removeClass('glyphicon glyphicon-remove');		    		
+				    	}
+				    	$('#form-group-email').addClass('has-success');
+				    	$('#form-group-email .form-control-feedback').addClass('glyphicon glyphicon-ok');
+				    }
+				}
+			});						
+		}
+
+	});
+
 
 
 	$('#btn_user_cadastro').click(function(event) {
-		/* Act on the event */
+		
 		var nome = $('#user_nome').val();
 		var sobrenome = $('#user_sobrenome').val();
 		var email = $('#user_email').val();
@@ -50,23 +77,27 @@ $(document).ready(function() {
 		var sexo = $('#user_sexo').val();		
 		var senha = $('#user_senha').val();
 
-		$.ajax({
-		   type: "POST",
-		   url: "inc/cadastro_usuario.php",
-		   data: "user_nome="+nome+"&user_sobrenome="+sobrenome+"&user_email="+email+"&user_idade="+idade+"&user_sexo="+sexo+"&user_senha="+senha,
-		   success: function(formOk){
-		    if(formOk=='true') {
-		    	window.location="album.php";
-		    }
-		    else {
-		    	alert('deu ruim');
-		    }
-		   }
-		   /*beforeSend:function() {
-		   	$("#add_err").html("Loading...")
-		   }*/
-		});
+		if (nome != "" && sobrenome != "" && email != "" && senha != "") { //validacao simples
 
+			$.ajax({
+			   type: "POST",
+			   url: "inc/cadastro_usuario.php",
+			   data: "user_nome="+nome+"&user_sobrenome="+sobrenome+"&user_email="+email+"&user_idade="+idade+"&user_sexo="+sexo+"&user_senha="+senha,
+			   success: function(formOk){
+			    if(formOk=='true') {
+			    	window.location="album.php";
+			    }
+			    else {
+			    	alert('deu ruim');
+			    }
+			   }
+			   /*beforeSend:function() {
+			   	$("#add_err").html("Loading...")
+			   }*/
+			});
+	 	} else {
+	 		$(".help-block").append('Está faltando preencher alguma coisa...');
+	 	}
 
 		return false;
 	});
