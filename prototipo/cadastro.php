@@ -23,7 +23,7 @@
             </div>
             <div class="form-group">
                 <label for="user_idade" class="label-control">Idade:</label>
-                <input type="text" placeholder="Digite seu e-mail" class="form-control" id="user_idade" name="user_idade">                    
+                <input type="text" placeholder="Digite sua idade" class="form-control" id="user_idade" name="user_idade">                    
             </div>
             <div class="form-group">
                 <label for="user_sexo" class="label-control">Idade:</label>
