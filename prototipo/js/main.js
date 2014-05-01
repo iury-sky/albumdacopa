@@ -15,15 +15,11 @@ $(document).ready(function() {
 			    	window.location="album.php";
 			    }
 			    else {
-			    	alert('E-mail ou senha errado');
+			    	alert('ERRO: E-mail ou senha errado');
 			    }
 			   }
-			   /*beforeSend:function() {
-			   	$("#add_err").html("Loading...")
-			   }*/
 			});
 		}
-
 		return false;
 	});
 
@@ -40,7 +36,7 @@ $(document).ready(function() {
 
 		if (email != "") {
 			$.ajax({
-				url: 'inc/user_check.php',
+				url: 'inc/usuario_mail_check.php',
 				type: 'POST',
 				data: 'user_email='+email,
 				success: function(formOk){
@@ -62,6 +58,14 @@ $(document).ready(function() {
 				    }
 				}
 			});						
+		} 
+		else { //no caso do campo ficar vazio, retorna erro
+	    	if( $('#form-group-email').hasClass('has-success') ) { //limpando...
+	    		$('#form-group-email').removeClass('has-success');		
+	    		$('#form-group-email .form-control-feedback').removeClass('glyphicon glyphicon-ok');		    		
+	    	}
+	    	$('#form-group-email').addClass('has-error');
+	    	$('#form-group-email .form-control-feedback').addClass('glyphicon glyphicon-remove');
 		}
 
 	});
@@ -70,12 +74,12 @@ $(document).ready(function() {
 
 	$('#btn_user_cadastro').click(function(event) {
 		
-		var nome = $('#user_nome').val();
-		var sobrenome = $('#user_sobrenome').val();
-		var email = $('#user_email').val();
-		var idade = $('#user_idade').val();
-		var sexo = $('#user_sexo').val();		
-		var senha = $('#user_senha').val();
+		var nome 		= $('#user_nome').val();
+		var sobrenome 	= $('#user_sobrenome').val();
+		var email 		= $('#user_email').val();
+		var idade 		= $('#user_idade').val();
+		var sexo 		= $('#user_sexo').val();		
+		var senha 		= $('#user_senha').val();
 
 		if (nome != "" && sobrenome != "" && email != "" && senha != "") { //validacao simples
 
@@ -88,7 +92,7 @@ $(document).ready(function() {
 			    	window.location="album.php";
 			    }
 			    else {
-			    	alert('deu ruim');
+			    	alert('Infelizmente ocorreu um erro inesperado.');
 			    }
 			   }
 			   /*beforeSend:function() {

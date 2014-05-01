@@ -1,6 +1,9 @@
 <?php  
-    session_start();
-    require_once('inc/global.php');    
+    require_once('inc/global.php');
+    require_once('inc/usuario.php');    
+
+    // cria instancia da classe usuario para manipulacao
+    $usuario = new Usuario();
 ?>
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -42,13 +45,13 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li><a href="index.php" id="link_inicio">Início</a></li>
-                        <?php if(!isset($_SESSION['email'])): ?>  
+                        <?php if(!$usuario->usuarioLogado()): ?>  
                         <li><a href="cadastro.php">Cadastro</a></li>
                         <?php else: ?>                        
                         <li><a href="album.php">Meu Album</a></li>                        
                         <?php endif; ?>
                     </ul>
-                    <?php if(isset($_SESSION['email'])): ?>  
+                    <?php if($usuario->usuarioLogado()): ?>  
                     <div class="navbar-form navbar-right" role="form" id="form_logout" name="form_logout">
                         <a href="inc/logout.php" class="btn btn-default" id="btn_logout">Logout</a>
                     </div>

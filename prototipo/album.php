@@ -1,18 +1,48 @@
 <?php 
 require_once('inc/header.php'); 
-
-if(isset($_SESSION['email'])): 
+require_once('inc/usuario.php');
+if($usuario->usuarioLogado()): 
 ?>  
 <div class="container">
     <div class="starter-template">        
-        <p class="lead">Olá <?php echo $_SESSION['user_name'] . " " . $_SESSION['user_surname']; ?>, </p>
+        <p class="pull-right"><?php echo $_SESSION['usuario_name'] . " " . $_SESSION['usuario_surname']; ?><br><small>(<?php echo $_SESSION['usuario_email']; ?>)</small></p>
         <h1>Meu álbum</h1>
+
+        <div id="album">
+
+        	<div id="time1" class="time">
+        		
+        		<div class="figurinha pull-left">
+        			<img src="http://www.placehold.it/200x250" />
+        			<div class="titulo">nome do jogador</div>
+        		</div><!-- .figurinha -->
+
+        		<div class="figurinha pull-left">
+        			<img src="http://www.placehold.it/200x250" />
+        			<div class="titulo">nome do jogador</div>
+        		</div><!-- .figurinha -->
+
+        		<div class="clearfix"></div>
+        	</div><!-- .time -->
+
+        	<div id="time2" class="time">
+        		
+        		<div class="figurinha pull-left">
+        			<img src="http://www.placehold.it/200x250" />
+        			<div class="titulo">nome do jogador</div>
+        		</div><!-- .figurinha -->
+
+        		<div class="clearfix"></div>
+        	</div><!-- .time -->
+
+        </div>
+
     </div>
 </div><!-- /.container -->
-<?php else: ?>
-<div class="container">
-	Você não está logado.
-</div><!-- /.container -->
-<?php endif; //login check ?>
+<?php 
+else: 
+	require_once('inc/login_fail.php');
+endif; //login check 
 
-<?php require_once('inc/footer.php'); ?>
+require_once('inc/footer.php'); 
+?>

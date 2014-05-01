@@ -1,22 +1,31 @@
 <?php
+include "conexao.php";	
+
+Class FigurinhaDAO  {
 	
-require_once('global.php');
-require_once('connection.php');
-
-	$db = $database;
-	$db_table ="figurinha";
-	$banco = mysql_select_db($db,$conexao);
-	$query = "select * from $db_table";
-	$result = mysql_query($query,$conexao)or die (mysql_error());
-	$num_row = mysql_num_rows($result);/*usarie para fazer a contagem de cartas*/
-	$row=mysql_fetch_assoc($result);
-
-	for($i = 0; $i < $num_row; $i++){
+	public $conn=NULL;
 		
-		print("<div>figurinha</div>");
+	public function FigurinhaDAO() {
+		$this->conn=new Conexao();
 	}	
 
-	  	
-				  	
+	public function getQuantidade(){
+		
+		$this->conn->Connect();
+		$query = mysql_query("SELECT * FROM figurinha") or die (mysql_error());
+		$num_row = mysql_num_rows($query);
+       	        
+        for($i = 0; $i < $num_row; $i++){		
+			print("<div>figurinha</div>");
+		}	
+
+        $this->conn->disconnect();
+	}  	
+}			  	
+ 
+$daoteste = new FigurinhaDAO();
+$daoteste->getQuantidade();
+ 
+ 	
  ?>
 		

@@ -26,7 +26,7 @@
                 <input type="text" placeholder="Digite sua idade" class="form-control" id="user_idade" name="user_idade">                    
             </div>
             <div class="form-group">
-                <label for="user_sexo" class="label-control">Idade:</label>
+                <label for="user_sexo" class="label-control">Sexo:</label>
                 <select class="form-control" id="user_sexo" name="user_sexo">
                     <option></option>
                     <option value="0">Masculino</option>
