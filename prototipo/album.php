@@ -1,7 +1,9 @@
 <?php 
-require_once('inc/header.php'); 
+//require_once('inc/header.php'); 
 require_once('inc/usuario.php');
-if($usuario->usuarioLogado()): 
+require_once('inc/album.php');
+//if($usuario->usuarioLogado()):
+if(TRUE): 
 ?>  
 <div class="container">
     <div class="starter-template">        
@@ -13,8 +15,19 @@ if($usuario->usuarioLogado()):
         	<div id="time1" class="time">
         		
         		<div class="figurinha pull-left">
-        			<img src="http://www.placehold.it/200x250" />
-        			<div class="titulo">nome do jogador</div>
+        			<?php 
+        			$album = new Album();
+        			$colecao=$album->obterColecao(9);	
+        			foreach ($colecao as $item){
+
+        				$teste=$item->getUrl();
+						print('<img src='.$teste.'/>');
+        				print('<div class="titulo">nome do jogador</div>');			
+					}
+        			       			
+        			
+        			
+        			?>
         		</div><!-- .figurinha -->
 
         		<div class="figurinha pull-left">
