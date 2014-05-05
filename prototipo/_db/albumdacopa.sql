@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 02-Maio-2014 às 03:43
+-- Data de Criação: 05-Maio-2014 às 21:27
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -53,7 +53,10 @@ INSERT INTO `album` (`id`, `id_usuario`, `id_figurinha`) VALUES
 
 CREATE TABLE IF NOT EXISTS `figurinha` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
-  `endereco` varchar(100) NOT NULL,
+  `label` varchar(50) DEFAULT NULL,
+  `img_url` varchar(100) DEFAULT NULL,
+  `posicao` int(100) DEFAULT NULL,
+  `id_time` int(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
@@ -61,9 +64,21 @@ CREATE TABLE IF NOT EXISTS `figurinha` (
 -- Extraindo dados da tabela `figurinha`
 --
 
-INSERT INTO `figurinha` (`id`, `endereco`) VALUES
-(1, '"/foto.jpg"'),
-(2, '/foto2.jpg');
+INSERT INTO `figurinha` (`id`, `label`, `img_url`, `posicao`, `id_time`) VALUES
+(1, NULL, '"/foto.jpg"', NULL, NULL),
+(2, NULL, '/foto2.jpg', NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `time`
+--
+
+CREATE TABLE IF NOT EXISTS `time` (
+  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -98,8 +113,8 @@ INSERT INTO `usuario` (`id`, `nome`, `sobrenome`, `email`, `idade`, `sexo`, `sen
 -- Limitadores para a tabela `album`
 --
 ALTER TABLE `album`
-  ADD CONSTRAINT `album_ibfk_2` FOREIGN KEY (`id_figurinha`) REFERENCES `figurinha` (`id`),
-  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
+  ADD CONSTRAINT `album_ibfk_2` FOREIGN KEY (`id_figurinha`) REFERENCES `figurinha` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
