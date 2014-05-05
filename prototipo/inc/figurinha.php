@@ -69,7 +69,7 @@ Class Figurinha  {
 		
 		
 		
-	}
+}
 
 
 		
@@ -103,4 +103,3 @@ Class Figurinha  {
  
  	
  ?>
-		
