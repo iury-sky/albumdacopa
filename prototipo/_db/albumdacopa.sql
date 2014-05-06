@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 05-Maio-2014 às 21:27
+-- Data de Criação: 06-Maio-2014 às 01:08
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -32,18 +32,8 @@ CREATE TABLE IF NOT EXISTS `album` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
   `id_usuario` int(100) NOT NULL,
   `id_figurinha` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_figurinha` (`id_figurinha`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `album`
---
-
-INSERT INTO `album` (`id`, `id_usuario`, `id_figurinha`) VALUES
-(1, 9, 2),
-(2, 9, 1);
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -59,14 +49,6 @@ CREATE TABLE IF NOT EXISTS `figurinha` (
   `id_time` int(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `figurinha`
---
-
-INSERT INTO `figurinha` (`id`, `label`, `img_url`, `posicao`, `id_time`) VALUES
-(1, NULL, '"/foto.jpg"', NULL, NULL),
-(2, NULL, '/foto2.jpg', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -104,17 +86,6 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 INSERT INTO `usuario` (`id`, `nome`, `sobrenome`, `email`, `idade`, `sexo`, `senha`) VALUES
 (8, 'Felipe', 'Mello', 'felpmel@gmail.com', 29, 0, '1234'),
 (9, 'Teste2', 'TesteSobrenome2', 'email2', 22, 0, '12345');
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `album`
---
-ALTER TABLE `album`
-  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  ADD CONSTRAINT `album_ibfk_2` FOREIGN KEY (`id_figurinha`) REFERENCES `figurinha` (`id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
