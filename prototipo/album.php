@@ -15,17 +15,21 @@ if($usuario->usuarioLogado()):
         		
         		<div class="figurinha pull-left">
         		<?php 
+                    $indice = 0;
         			$album = new Album();
         			$colecao = $album->obterColecao(9);	
 
         			foreach ($colecao as $item):
                 ?>
-                    <div class="figurinha pull-left" style="margin-right:10px">
+                    <div id="figurinha-<?php echo $indice; ?>" class="figurinha pull-left" style="margin-right:10px">
                         <img src="<?php echo $item['img_url']; ?>" />
                         <div class="titulo"><?php echo $item['label']; ?></div>
                     </div><!-- .figurinha -->
 
-                <?php endforeach; ?>      			
+                <?php 
+                    $indice++;
+                    endforeach; 
+                ?>      			
         			
         		</div><!-- .figurinha -->
                 <div class="clearfix"></div>
