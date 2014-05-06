@@ -3,9 +3,16 @@
 
 Class Figurinha  {
 	
-	public function Figurinha(){
+	
+	
+	public function Figurinha($id,$label,$url,$position,$idTime){
 		
-	}
+		$this->id=$id;
+		$this->label=$label;
+		$this->url=$url;
+		$this->position=$position;
+		$this->idTime=$idTime;
+	} 
 		
 	private $id;
 	private $label;
@@ -42,28 +49,28 @@ Class Figurinha  {
 	
 	public function getId(){
 	
-		return $id;
+		return $this->id;
 	
 	}
 	public function getLabel(){
 	
-		return $label;
+		return $this->label;
 	
 	}
 	public function getUrl(){
-	
-		return $url;
+		
+		return $this->url;
 	
 	}
 	public function getPosition(){
 	
-		return $position;
+		return $this->position;
 	
 	}
 	
 	public function getTeam (){
 		
-		return $idTime;
+		return $this->idTime;
 		
 	}
 		

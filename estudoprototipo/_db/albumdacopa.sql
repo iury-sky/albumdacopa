@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Máquina: localhost
--- Data de Criação: 02-Maio-2014 às 03:43
+-- Data de Criação: 26-Abr-2014 às 14:55
 -- Versão do servidor: 5.6.12-log
 -- versão do PHP: 5.4.12
 
@@ -25,45 +25,16 @@ USE `albumdacopa`;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `album`
---
-
-CREATE TABLE IF NOT EXISTS `album` (
-  `id` int(100) NOT NULL AUTO_INCREMENT,
-  `id_usuario` int(100) NOT NULL,
-  `id_figurinha` int(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `id_usuario` (`id_usuario`),
-  KEY `id_figurinha` (`id_figurinha`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `album`
---
-
-INSERT INTO `album` (`id`, `id_usuario`, `id_figurinha`) VALUES
-(1, 9, 2),
-(2, 9, 1);
-
--- --------------------------------------------------------
-
---
 -- Estrutura da tabela `figurinha`
 --
 
 CREATE TABLE IF NOT EXISTS `figurinha` (
   `id` int(100) NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) NOT NULL,
   `endereco` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Extraindo dados da tabela `figurinha`
---
-
-INSERT INTO `figurinha` (`id`, `endereco`) VALUES
-(1, '"/foto.jpg"'),
-(2, '/foto2.jpg');
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -80,26 +51,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `sexo` int(11) NOT NULL,
   `senha` varchar(64) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
-
---
--- Extraindo dados da tabela `usuario`
---
-
-INSERT INTO `usuario` (`id`, `nome`, `sobrenome`, `email`, `idade`, `sexo`, `senha`) VALUES
-(8, 'Felipe', 'Mello', 'felpmel@gmail.com', 29, 0, '1234'),
-(9, 'Teste2', 'TesteSobrenome2', 'email2', 22, 0, '12345');
-
---
--- Constraints for dumped tables
---
-
---
--- Limitadores para a tabela `album`
---
-ALTER TABLE `album`
-  ADD CONSTRAINT `album_ibfk_2` FOREIGN KEY (`id_figurinha`) REFERENCES `figurinha` (`id`),
-  ADD CONSTRAINT `album_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

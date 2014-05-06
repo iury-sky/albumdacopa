@@ -33,22 +33,22 @@ Class Album {
 		
 		$this->conn->Connect();
 		
-		$fig = new Figurinha();
+		//$fig = new Figurinha();
 		
-		$result = mysql_query("SELECT figurinha.id, figurinha.label, figurinha.img_url, figurinha.posicao, figurinha.id_time FROM album 
+		$result = mysql_query("SELECT figurinha.* FROM album 
 			INNER join figurinha ON album.id_figurinha = figurinha.id WHERE album.id_usuario=$id_;") or die ('Busca de o seguinte erro'.mysql_error());
 			
 		;
 				
 		while($row = mysql_fetch_row($result,MYSQL_ASSOC)) {
-			$fig = new Figurinha();
+			array_push($colecao,new Figurinha($row['id'],$row['label'],$row['img_url'],$row['posicao'],$row['id_time']));
 			
-			$fig->setId($row['id']);
-			$fig->setLabel($row['label']);
-			$fig->setUrl($row['img_url']);
+//			$fig->setId($row['id']);
+//			$fig->setLabel($row['label']);
+//			$fig->setUrl($row['img_url']);
+//			$fig->setPosition($row['position']);
+//			$fig->setTeam($row['id_time']);
 			
-			$fig->setTeam($row['id_time']);
-			array_push($colecao,$fig);
 			
 		}
 
@@ -61,7 +61,7 @@ Class Album {
 //			print($row['id_time']);
 //			print("</div> ");
 //		}
-		$this->conn->disconnect();
+		mysql_free_result($result);;
 		return $colecao;
 		
 					

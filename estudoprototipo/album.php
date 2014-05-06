@@ -19,21 +19,14 @@ if(TRUE):
         			$album = new Album();
         			$colecao=$album->obterColecao(9);	
         			foreach ($colecao as $item){
-
-        				$teste=$item->getUrl();
-						print('<img src='.$teste.'/>');
-        				print('<div class="titulo">nome do jogador</div>');			
+        				
+						print('<img src='.$item->getUrl().'/>');
+        				print('<div class="titulo">'.$item->getLabel().'</div>');			
 					}
-        			       			
-        			
-        			
+        			        			
         			?>
         		</div><!-- .figurinha -->
 
-        		<div class="figurinha pull-left">
-        			<img src="http://www.placehold.it/200x250" />
-        			<div class="titulo">nome do jogador</div>
-        		</div><!-- .figurinha -->
 
         		<div class="clearfix"></div>
         	</div><!-- .time -->
