@@ -158,8 +158,8 @@ Class Usuario {
 			$this->conn->Connect();
 
 			//Query que realiza a inserção dos dados no banco de dados na tabela indicada acima
-			$sql = "INSERT INTO `$this->db_table` ( `nome`, `sobrenome` ,`email` ,`idade` ,`sexo` ,`senha` ) 
-			VALUES ( '$nome', '$sobrenome', '$email', '$idade', '$sexo', '$senha_md5' )";
+			$sql = "INSERT INTO `$this->db_table` ( `nome`, `sobrenome` ,`email` ,`idade` ,`sexo` ,`senha`, `acesso` ) 
+			VALUES ( '$nome', '$sobrenome', '$email', '$idade', '$sexo', '$senha_md5', now() )";
 
 			//processa a query
 			$query = mysql_query($sql) or die (mysql_error());	
