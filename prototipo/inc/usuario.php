@@ -25,6 +25,18 @@ Class Usuario {
 	}
 
 	/**
+	*	Retorna o ID do usuário logado
+	*	
+	*	@param none
+	*	@return integer 
+	*/
+	public function getID() {
+		$loggedUserId = $_SESSION[ $this->prefixoChaves . 'id' ];
+		return $loggedUserId;
+	}
+
+
+	/**
 	*	Checa se o usuario é valido
 	*	
 	*	@param string $login

@@ -17,18 +17,25 @@ if($usuario->usuarioLogado()):
         		<?php 
                     $indice = 0;
         			$album = new Album();
-        			$colecao = $album->obterColecao(9);	
 
-        			foreach ($colecao as $item):
+        			$colecao = $album->obterColecao( $usuario->getID() );
+
+                    if (isset($colecao)): 
+        			 foreach ($colecao as $item):
                 ?>
                     <div id="figurinha-<?php echo $indice; ?>" class="figurinha pull-left" style="margin-right:10px">
-                        <img src="<?php echo $item['img_url']; ?>" />
+                        <img src="<?php echo 'img/' . $item['img_url']; ?>" width="200" />
                         <div class="titulo"><?php echo $item['label']; ?></div>
                     </div><!-- .figurinha -->
 
                 <?php 
                     $indice++;
-                    endforeach; 
+                      endforeach; 
+                    else:
+                ?>
+                    Album está vazio, que tal responder uma pergunta e começar sua coleção?
+                <?php                        
+                    endif;
                 ?>      			
         			
         		</div><!-- .figurinha -->

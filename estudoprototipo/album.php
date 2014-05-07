@@ -1,9 +1,8 @@
 <?php 
-//require_once('inc/header.php'); 
+require_once('inc/header.php'); 
 require_once('inc/usuario.php');
 require_once('inc/album.php');
-//if($usuario->usuarioLogado()):
-if(TRUE): 
+if($usuario->usuarioLogado()):
 ?>  
 <div class="container">
     <div class="starter-template">        
