@@ -1,4 +1,8 @@
-<?php require_once('inc/header.php'); ?>
+<?php 
+require_once('inc/header.php'); 
+require_once('inc/usuario.php');
+if(!$usuario->usuarioLogado()):
+?>
 
 <div class="container">
 
@@ -45,5 +49,15 @@
     </div>
 
 </div><!-- /.container -->
+<?php 
+else:     
+?>
+<div class="container">
+    <h1>Ops!</h1>
+    <p>Você não tem acesso a essa página.</p>    
+</div><!-- /.container -->
+<?php
+endif; //login check 
 
-<?php require_once('inc/footer.php'); ?>
+require_once('inc/footer.php'); 
+?>
