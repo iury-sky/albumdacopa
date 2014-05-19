@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 4.1.14
 -- http://www.phpmyadmin.net
 --
--- Máquina: localhost
--- Data de Criação: 06-Maio-2014 às 01:08
--- Versão do servidor: 5.6.12-log
--- versão do PHP: 5.4.12
+-- Host: 127.0.0.1
+-- Tempo de geração: 19/05/2014 às 22:13
+-- Versão do servidor: 5.6.17
+-- Versão do PHP: 5.5.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,15 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de Dados: `albumdacopa`
+-- Banco de dados: `albumdacopa`
 --
-CREATE DATABASE IF NOT EXISTS `albumdacopa` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `albumdacopa`;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `album`
+-- Estrutura para tabela `album`
 --
 
 CREATE TABLE IF NOT EXISTS `album` (
@@ -38,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `album` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `figurinha`
+-- Estrutura para tabela `figurinha`
 --
 
 CREATE TABLE IF NOT EXISTS `figurinha` (
@@ -48,12 +46,31 @@ CREATE TABLE IF NOT EXISTS `figurinha` (
   `posicao` int(100) DEFAULT NULL,
   `id_time` int(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `time`
+-- Estrutura para tabela `resposta`
+--
+
+CREATE TABLE IF NOT EXISTS `resposta` (
+  `id_usuario` int(100) NOT NULL,
+  `id_pergunda` int(100) NOT NULL,
+  `data` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Fazendo dump de dados para tabela `resposta`
+--
+
+INSERT INTO `resposta` (`id_usuario`, `id_pergunda`, `data`) VALUES
+(1, 0, '0000-00-00 00:00:00');
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura para tabela `time`
 --
 
 CREATE TABLE IF NOT EXISTS `time` (
@@ -65,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `time` (
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `usuario`
+-- Estrutura para tabela `usuario`
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
@@ -80,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Extraindo dados da tabela `usuario`
+-- Fazendo dump de dados para tabela `usuario`
 --
 
 INSERT INTO `usuario` (`id`, `nome`, `sobrenome`, `email`, `idade`, `sexo`, `senha`) VALUES
