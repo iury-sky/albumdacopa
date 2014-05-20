@@ -17,8 +17,6 @@
 		* @return
 		*/
 		public function fazerPergunta($id_usuario){
-			
-			
 			 
 			$this->conn->Connect();	
 			$result = mysql_query(" SELECT * FROM resposta WHERE id_usuario=$id_usuario") or die ('a busca deu o seguinte erro'.mysql_error());		
@@ -43,8 +41,8 @@
 					
 					//trazer as perguntas 
 					
+					
 				}
-				
 					
 			 }
 			 //inserir o usuario na tabela pergunta
@@ -56,8 +54,9 @@
 			 	$result = mysql_query($insert) or die ("erro na inserção de dados".msql_erro());
 			 				 	
 			 }
+			 $this->conn->disconnect();
 			
-		}
+		}//FIM fazerPergunta
 		
 		
 	}
